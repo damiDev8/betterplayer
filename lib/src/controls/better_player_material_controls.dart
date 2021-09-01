@@ -299,10 +299,14 @@ class _BetterPlayerMaterialControlsState
               flex: 75,
               child: Row(
                 children: [
-                  if (_controlsConfiguration.enablePlayPause){
-                    _buildPlayPause(_controller!);
-                    _buildForwardButton();
-                  }else 
+                  if (_controlsConfiguration.enablePlayPause)
+                    Column(
+                      children: [
+                    _   _buildPlayPause(_controller!),
+                        _buildForwardButton()
+                      ]
+                    )
+                  else
                     const SizedBox(),
                   if (_betterPlayerController!.isLiveStream())
                     _buildLiveWidget()
