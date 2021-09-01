@@ -300,7 +300,10 @@ class _BetterPlayerMaterialControlsState
               child: Row(
                 children: [
                   if (_controlsConfiguration.enablePlayPause)
-                    _buildPlayPause(_controller!)
+                    Focus(
+                      autofocus: true,
+                      child: _buildPlayPause(_controller!)
+                    )
                   else
                     const SizedBox(),
                     _buildSkipButton(),
