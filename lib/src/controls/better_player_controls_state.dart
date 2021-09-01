@@ -198,7 +198,11 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
               style: _getOverflowMenuElementTextStyle(false),
             ),
             focusColor: Colors.blue
-          )
+          ),
+          onFocusChange: () {
+            BetterPlayerUtils.log("Failed to parse subtitle line")
+          }
+
           // child: Row(
           //   children: [
           //     const SizedBox(width: 8),
