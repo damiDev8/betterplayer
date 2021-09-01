@@ -300,10 +300,7 @@ class _BetterPlayerMaterialControlsState
               child: Row(
                 children: [
                   if (_controlsConfiguration.enablePlayPause)
-                    Focus(
-                      autofocus: true,
-                      child: _buildPlayPause(_controller!)
-                    )
+                   _buildPlayPause(_controller!) 
                   else
                     const SizedBox(),
                     _buildSkipButton(),
@@ -605,11 +602,14 @@ class _BetterPlayerMaterialControlsState
         height: double.infinity,
         margin: const EdgeInsets.symmetric(horizontal: 4),
         padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: Icon(
-          controller.value.isPlaying
-              ? _controlsConfiguration.pauseIcon
-              : _controlsConfiguration.playIcon,
-          color: _controlsConfiguration.iconsColor,
+        child: Focus(
+          autofocus: true,
+          child: Icon(
+            controller.value.isPlaying
+                ? _controlsConfiguration.pauseIcon
+                : _controlsConfiguration.playIcon,
+            color: _controlsConfiguration.iconsColor,
+          ),
         ),
       ),
     );
