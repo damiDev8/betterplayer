@@ -123,19 +123,22 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-        child: Row(
-          children: [
-            const SizedBox(width: 8),
-            Icon(
-              icon,
-              color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-            ),
-            const SizedBox(width: 16),
-            Text(
-              name,
-              style: _getOverflowMenuElementTextStyle(false),
-            ),
-          ],
+        child: Focus(
+          autofocus: true,
+          child: Row(
+            children: [
+              const SizedBox(width: 8),
+              Icon(
+                icon,
+                color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
+              ),
+              const SizedBox(width: 16),
+              Text(
+                name,
+                style: _getOverflowMenuElementTextStyle(false),
+              ),
+            ],
+          ),
         ),
       ),
     );
