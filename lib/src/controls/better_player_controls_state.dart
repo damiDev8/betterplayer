@@ -68,7 +68,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
     final translations = betterPlayerController!.translations;
     return SingleChildScrollView(
       // ignore: avoid_unnecessary_containers
-      child: FocusScope(
+      child: Focus(
         child: ListView(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
