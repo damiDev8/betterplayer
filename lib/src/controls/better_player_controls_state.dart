@@ -199,7 +199,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
             ),
             focusColor: Colors.blue
           ),
-          onFocusChange: () {
+          onFocusChange: (e) {
             BetterPlayerUtils.log("Failed to parse subtitle line");
           }
 
