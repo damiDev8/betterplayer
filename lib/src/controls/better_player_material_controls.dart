@@ -443,7 +443,7 @@ class _BetterPlayerMaterialControlsState
         log('avanti!');
       },
       child: AnimatedOpacity(
-        // opacity: _hideStuff ? 0.0 : 1.0,
+        opacity: 1.0,
         // duration: _controlsConfiguration.controlsHideTime,
         child: ClipRect(
           child: Container(
