@@ -68,112 +68,114 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
     final translations = betterPlayerController!.translations;
     return SingleChildScrollView(
       // ignore: avoid_unnecessary_containers
-      child: ListView(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          if (betterPlayerControlsConfiguration.enablePlaybackSpeed)
-            ListTile(
-              autofocus: true,
-              leading: Icon(
-                betterPlayerControlsConfiguration.playbackSpeedIcon,
-                color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-              ),
-              title: Text(
-                translations.overflowMenuPlaybackSpeed,
-                style: _getOverflowMenuElementTextStyle(false),
-              ),
-              focusColor: Colors.blue,
-              onTap: () {
-                Navigator.of(context).pop();
-                _showSpeedChooserWidget();
-              },
-            ),
-            // buildMoreOptionsListRow(
-            //     betterPlayerControlsConfiguration.playbackSpeedIcon,
-            //     translations.overflowMenuPlaybackSpeed, () {
-            //   Navigator.of(context).pop();
-            //   _showSpeedChooserWidget();
-            // }),
-          if (betterPlayerControlsConfiguration.enableSubtitles)
-            ListTile(
-              leading: Icon(
-                betterPlayerControlsConfiguration.subtitlesIcon,
-                color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-              ),
-              title: Text(
-                translations.overflowMenuSubtitles,
-                style: _getOverflowMenuElementTextStyle(false),
-              ),
-              focusColor: Colors.blue,
-              onTap: () {
-                Navigator.of(context).pop();
-                _showSubtitlesSelectionWidget();
-              },
-            ),
-            // _buildMoreOptionsListRow(
-            //     betterPlayerControlsConfiguration.subtitlesIcon,
-            //     translations.overflowMenuSubtitles, () {
-            //   Navigator.of(context).pop();
-            //   _showSubtitlesSelectionWidget();
-            // }),
-          if (betterPlayerControlsConfiguration.enableQualities)
-            ListTile(
-              leading: Icon(
-                betterPlayerControlsConfiguration.qualitiesIcon,
-                color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-              ),
-              title: Text(
-                translations.overflowMenuQuality,
-                style: _getOverflowMenuElementTextStyle(false),
-              ),
-              focusColor: Colors.blue,
-              onTap: () {
-                Navigator.of(context).pop();
-                _showQualitiesSelectionWidget();
-              },
-            ),
-            // buildMoreOptionsListRow(
-            //     betterPlayerControlsConfiguration.qualitiesIcon,
-            //     translations.overflowMenuQuality, () {
-            //   Navigator.of(context).pop();
-            //   _showQualitiesSelectionWidget();
-            // }),
-          if (betterPlayerControlsConfiguration.enableAudioTracks)
-            ListTile(
-              leading: Icon(
-                betterPlayerControlsConfiguration.audioTracksIcon,
-                color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-              ),
-              title: Text(
-                translations.overflowMenuAudioTracks,
-                style: _getOverflowMenuElementTextStyle(false),
-              ),
-              focusColor: Colors.blue,
-              onTap: () {
-                Navigator.of(context).pop();
-                _showAudioTracksSelectionWidget();
-              },
-            ),
-            // _buildMoreOptionsListRow(
-            //     betterPlayerControlsConfiguration.audioTracksIcon,
-            //     translations.overflowMenuAudioTracks, () {
-            //   Navigator.of(context).pop();
-            //   _showAudioTracksSelectionWidget();
-            // }),
-          if (betterPlayerControlsConfiguration
-              .overflowMenuCustomItems.isNotEmpty)
-            ...betterPlayerControlsConfiguration.overflowMenuCustomItems.map(
-              (customItem) => _buildMoreOptionsListRow(
-                customItem.icon,
-                customItem.title,
-                () {
+      child: FocusScope(
+        child: ListView(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            if (betterPlayerControlsConfiguration.enablePlaybackSpeed)
+              ListTile(
+                autofocus: true,
+                leading: Icon(
+                  betterPlayerControlsConfiguration.playbackSpeedIcon,
+                  color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
+                ),
+                title: Text(
+                  translations.overflowMenuPlaybackSpeed,
+                  style: _getOverflowMenuElementTextStyle(false),
+                ),
+                focusColor: Colors.blue,
+                onTap: () {
                   Navigator.of(context).pop();
-                  customItem.onClicked.call();
+                  _showSpeedChooserWidget();
                 },
               ),
-            )
-        ],
+              // buildMoreOptionsListRow(
+              //     betterPlayerControlsConfiguration.playbackSpeedIcon,
+              //     translations.overflowMenuPlaybackSpeed, () {
+              //   Navigator.of(context).pop();
+              //   _showSpeedChooserWidget();
+              // }),
+            if (betterPlayerControlsConfiguration.enableSubtitles)
+              ListTile(
+                leading: Icon(
+                  betterPlayerControlsConfiguration.subtitlesIcon,
+                  color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
+                ),
+                title: Text(
+                  translations.overflowMenuSubtitles,
+                  style: _getOverflowMenuElementTextStyle(false),
+                ),
+                focusColor: Colors.blue,
+                onTap: () {
+                  Navigator.of(context).pop();
+                  _showSubtitlesSelectionWidget();
+                },
+              ),
+              // _buildMoreOptionsListRow(
+              //     betterPlayerControlsConfiguration.subtitlesIcon,
+              //     translations.overflowMenuSubtitles, () {
+              //   Navigator.of(context).pop();
+              //   _showSubtitlesSelectionWidget();
+              // }),
+            if (betterPlayerControlsConfiguration.enableQualities)
+              ListTile(
+                leading: Icon(
+                  betterPlayerControlsConfiguration.qualitiesIcon,
+                  color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
+                ),
+                title: Text(
+                  translations.overflowMenuQuality,
+                  style: _getOverflowMenuElementTextStyle(false),
+                ),
+                focusColor: Colors.blue,
+                onTap: () {
+                  Navigator.of(context).pop();
+                  _showQualitiesSelectionWidget();
+                },
+              ),
+              // buildMoreOptionsListRow(
+              //     betterPlayerControlsConfiguration.qualitiesIcon,
+              //     translations.overflowMenuQuality, () {
+              //   Navigator.of(context).pop();
+              //   _showQualitiesSelectionWidget();
+              // }),
+            if (betterPlayerControlsConfiguration.enableAudioTracks)
+              ListTile(
+                leading: Icon(
+                  betterPlayerControlsConfiguration.audioTracksIcon,
+                  color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
+                ),
+                title: Text(
+                  translations.overflowMenuAudioTracks,
+                  style: _getOverflowMenuElementTextStyle(false),
+                ),
+                focusColor: Colors.blue,
+                onTap: () {
+                  Navigator.of(context).pop();
+                  _showAudioTracksSelectionWidget();
+                },
+              ),
+              // _buildMoreOptionsListRow(
+              //     betterPlayerControlsConfiguration.audioTracksIcon,
+              //     translations.overflowMenuAudioTracks, () {
+              //   Navigator.of(context).pop();
+              //   _showAudioTracksSelectionWidget();
+              // }),
+            if (betterPlayerControlsConfiguration
+                .overflowMenuCustomItems.isNotEmpty)
+              ...betterPlayerControlsConfiguration.overflowMenuCustomItems.map(
+                (customItem) => _buildMoreOptionsListRow(
+                  customItem.icon,
+                  customItem.title,
+                  () {
+                    Navigator.of(context).pop();
+                    customItem.onClicked.call();
+                  },
+                ),
+              )
+          ],
+        ),
       ),
     );
   }
