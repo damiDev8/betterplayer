@@ -85,7 +85,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                 focusColor: Colors.blue,
                 onTap: () {
                   Navigator.of(context).pop();
-                 _  showSpeedChooserWidget();
+                  _showSpeedChooserWidget();
                 },
               ),_
               // buildMoreOptionsListRow(
