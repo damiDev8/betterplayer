@@ -442,9 +442,8 @@ class _BetterPlayerMaterialControlsState
       onTap: () {
         log('avanti!');
       },
-      child: AnimatedOpacity(
-        opacity: 1.0,
-        // duration: _controlsConfiguration.controlsHideTime,
+      child: Container(
+        height: _controlsConfiguration.controlBarHeight,
         child: ClipRect(
           child: Container(
             height: _controlsConfiguration.controlBarHeight,
