@@ -87,7 +87,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                   Navigator.of(context).pop();
                   _showSpeedChooserWidget();
                 },
-              ),_
+              ),
               // buildMoreOptionsListRow(
               //     betterPlayerControlsConfiguration.playbackSpeedIcon,
               //     translations.overflowMenuPlaybackSpeed, () {
@@ -131,7 +131,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                   Navigator.of(context).pop();
                   _showQualitiesSelectionWidget();
                 },
-              ),_
+              ),
               // buildMoreOptionsListRow(
               //     betterPlayerControlsConfiguration.qualitiesIcon,
               //     translations.overflowMenuQuality, () {
