@@ -298,7 +298,7 @@ class _BetterPlayerMaterialControlsState
             Expanded(
               flex: 75,
               child: Row(
-                children: [
+                children: <Widget>[
                   if (_controlsConfiguration.enablePlayPause)
                     Column(
                       children: [
