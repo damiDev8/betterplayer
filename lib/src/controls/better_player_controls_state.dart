@@ -73,23 +73,21 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         physics: NeverScrollableScrollPhysics(),
         children: [
           if (betterPlayerControlsConfiguration.enablePlaybackSpeed)
-            Container (
-              child: ListTile(
-                autofocus: true,
-                leading: Icon(
-                  betterPlayerControlsConfiguration.playbackSpeedIcon,
-                  color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-                ),
-                title: Text(
-                  translations.overflowMenuPlaybackSpeed,
-                  style: _getOverflowMenuElementTextStyle(false),
-                ),
-                focusColor: Colors.blue,
-                onTap: () {
-                  Navigator.of(context).pop();
-                  _showSpeedChooserWidget();
-                },
+            ListTile(
+              autofocus: true,
+              leading: Icon(
+                betterPlayerControlsConfiguration.playbackSpeedIcon,
+                color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
               ),
+              title: Text(
+                translations.overflowMenuPlaybackSpeed,
+                style: _getOverflowMenuElementTextStyle(false),
+              ),
+              focusColor: Colors.blue,
+              onTap: () {
+                Navigator.of(context).pop();
+                _showSpeedChooserWidget();
+              },
             ),
             // buildMoreOptionsListRow(
             //     betterPlayerControlsConfiguration.playbackSpeedIcon,
@@ -98,22 +96,20 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
             //   _showSpeedChooserWidget();
             // }),
           if (betterPlayerControlsConfiguration.enableSubtitles)
-            Container (
-              child: ListTile(
-                leading: Icon(
-                  betterPlayerControlsConfiguration.subtitlesIcon,
-                  color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-                ),
-                title: Text(
-                  translations.overflowMenuSubtitles,
-                  style: _getOverflowMenuElementTextStyle(false),
-                ),
-                focusColor: Colors.blue,
-                onTap: () {
-                  Navigator.of(context).pop();
-                  _showSubtitlesSelectionWidget();
-                },
+            ListTile(
+              leading: Icon(
+                betterPlayerControlsConfiguration.subtitlesIcon,
+                color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
               ),
+              title: Text(
+                translations.overflowMenuSubtitles,
+                style: _getOverflowMenuElementTextStyle(false),
+              ),
+              focusColor: Colors.blue,
+              onTap: () {
+                Navigator.of(context).pop();
+                _showSubtitlesSelectionWidget();
+              },
             ),
             // _buildMoreOptionsListRow(
             //     betterPlayerControlsConfiguration.subtitlesIcon,
@@ -122,22 +118,20 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
             //   _showSubtitlesSelectionWidget();
             // }),
           if (betterPlayerControlsConfiguration.enableQualities)
-            Container (
-              child: ListTile(
-                leading: Icon(
-                  betterPlayerControlsConfiguration.qualitiesIcon,
-                  color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-                ),
-                title: Text(
-                  translations.overflowMenuQuality,
-                  style: _getOverflowMenuElementTextStyle(false),
-                ),
-                focusColor: Colors.blue,
-                onTap: () {
-                  Navigator.of(context).pop();
-                  _showQualitiesSelectionWidget();
-                },
+            ListTile(
+              leading: Icon(
+                betterPlayerControlsConfiguration.qualitiesIcon,
+                color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
               ),
+              title: Text(
+                translations.overflowMenuQuality,
+                style: _getOverflowMenuElementTextStyle(false),
+              ),
+              focusColor: Colors.blue,
+              onTap: () {
+                Navigator.of(context).pop();
+                _showQualitiesSelectionWidget();
+              },
             ),
             // buildMoreOptionsListRow(
             //     betterPlayerControlsConfiguration.qualitiesIcon,
@@ -146,22 +140,20 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
             //   _showQualitiesSelectionWidget();
             // }),
           if (betterPlayerControlsConfiguration.enableAudioTracks)
-            Container (
-              child: ListTile(
-                leading: Icon(
-                  betterPlayerControlsConfiguration.audioTracksIcon,
-                  color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-                ),
-                title: Text(
-                  translations.overflowMenuAudioTracks,
-                  style: _getOverflowMenuElementTextStyle(false),
-                ),
-                focusColor: Colors.blue,
-                onTap: () {
-                  Navigator.of(context).pop();
-                  _showAudioTracksSelectionWidget();
-                },
+            ListTile(
+              leading: Icon(
+                betterPlayerControlsConfiguration.audioTracksIcon,
+                color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
               ),
+              title: Text(
+                translations.overflowMenuAudioTracks,
+                style: _getOverflowMenuElementTextStyle(false),
+              ),
+              focusColor: Colors.blue,
+              onTap: () {
+                Navigator.of(context).pop();
+                _showAudioTracksSelectionWidget();
+              },
             ),
             // _buildMoreOptionsListRow(
             //     betterPlayerControlsConfiguration.audioTracksIcon,
