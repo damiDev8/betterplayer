@@ -301,6 +301,7 @@ class _BetterPlayerMaterialControlsState
                 children: [
                   if (_controlsConfiguration.enablePlayPause)
                     _buildPlayPause(_controller!)
+                    _buildForwardButton()
                   else
                     const SizedBox(),
                   if (_betterPlayerController!.isLiveStream())
