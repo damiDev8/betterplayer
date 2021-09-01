@@ -188,20 +188,31 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
         child: Focus(
           autofocus: autofocus,
-          child: Row(
-            children: [
-              const SizedBox(width: 8),
-              Icon(
-                icon,
-                color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-              ),
-              const SizedBox(width: 16),
-              Text(
-                name,
-                style: _getOverflowMenuElementTextStyle(false),
-              ),
-            ],
-          ),
+          child: ListTile(
+            leading: Icon(
+              icon,
+              color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
+            ),
+            title: Text(
+              name,
+              style: _getOverflowMenuElementTextStyle(false),
+            ),
+            focusColor: Colors.blue
+          )
+          // child: Row(
+          //   children: [
+          //     const SizedBox(width: 8),
+          //     Icon(
+          //       icon,
+          //       color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
+          //     ),
+          //     const SizedBox(width: 16),
+          //     Text(
+          //       name,
+          //       style: _getOverflowMenuElementTextStyle(false),
+          //     ),
+          //   ],
+          // ),
         ),
       ),
     );
