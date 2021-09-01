@@ -303,6 +303,7 @@ class _BetterPlayerMaterialControlsState
                     _buildPlayPause(_controller!)
                   else
                     const SizedBox(),
+                    buildSkipButton(),
                    _buildForwardButton(),
                   if (_betterPlayerController!.isLiveStream())
                     _buildLiveWidget()
@@ -428,21 +429,37 @@ class _BetterPlayerMaterialControlsState
   }
 
   Widget _buildSkipButton() {
-    return _buildHitAreaClickableButton(
-      icon: Icon(
-        _controlsConfiguration.skipBackIcon,
-        size: 24,
-        color: _controlsConfiguration.iconsColor,
+    return BetterPlayerMaterialClickableWidget(
+      onTap: skipBack,
+      child: Container(
+        height: _controlsConfiguration.controlBarHeight,
+        child: ClipRect(
+          child: Container(
+            height: _controlsConfiguration.controlBarHeight,
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Icon(
+              _controlsConfiguration.skipBackIcon,
+              size: 24,
+              color: _controlsConfiguration.iconsColor,
+            ),
+          ),
+        ),
       ),
-      onClicked: skipBack,
     );
+
+    // return _buildHitAreaClickableButton(
+    //   icon: Icon(
+    //     _controlsConfiguration.skipBackIcon,
+    //     size: 24,
+    //     color: _controlsConfiguration.iconsColor,
+    //   ),
+    //   onClicked: skipBack,
+    // );
   }
 
   Widget _buildForwardButton() {
     return BetterPlayerMaterialClickableWidget(
-      onTap: () {
-        log('avanti!');
-      },
+      onTap: skipForward,
       child: Container(
         height: _controlsConfiguration.controlBarHeight,
         child: ClipRect(
