@@ -300,11 +300,14 @@ class _BetterPlayerMaterialControlsState
               child: Row(
                 children: <Widget>[
                   if (_controlsConfiguration.enablePlayPause)
-                    Column(
-                      children: <Widget>[
-                        _buildPlayPause(_controller!),
-                        _buildForwardButton()
-                      ]
+                    Container(
+                      height: 50
+                      child: Column(
+                        children: <Widget>[
+                          _buildPlayPause(_controller!),
+                          _buildForwardButton()
+                        ]
+                      )
                     )
                   else
                     const SizedBox(),
