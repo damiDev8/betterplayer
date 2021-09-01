@@ -68,6 +68,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
     final translations = betterPlayerController!.translations;
     return Expanded(
         child: ListView(
+          shrinkWrap: true,
           children: [
             if (betterPlayerControlsConfiguration.enablePlaybackSpeed)
               Container (
