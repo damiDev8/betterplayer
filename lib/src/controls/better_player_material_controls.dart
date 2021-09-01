@@ -303,7 +303,7 @@ class _BetterPlayerMaterialControlsState
                     _buildPlayPause(_controller!)
                   else
                     const SizedBox(),
-                  const _buildForwardButton(),
+                   _buildForwardButton(),
                   if (_betterPlayerController!.isLiveStream())
                     _buildLiveWidget()
                   else
