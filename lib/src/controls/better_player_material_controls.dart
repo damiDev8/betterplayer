@@ -302,7 +302,7 @@ class _BetterPlayerMaterialControlsState
                   if (_controlsConfiguration.enablePlayPause)
                     Column(
                       children: <Widget>[
-                    _   _buildPlayPause(_controller!),
+                        _buildPlayPause(_controller!),
                         _buildForwardButton()
                       ]
                     )
