@@ -77,13 +77,12 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                 leading: Icon(
                   betterPlayerControlsConfiguration.playbackSpeedIcon,
                   color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-                )
+                ),
                 title: Text(
                   translations.overflowMenuPlaybackSpeed,
                   style: _getOverflowMenuElementTextStyle(false),
                 ),
                 focusColor: Colors.blue,
-                autofo
                 onTap: () {
                   Navigator.of(context).pop();
                  _  showSpeedChooserWidget();
@@ -97,17 +96,15 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
               // }),
             if (betterPlayerControlsConfiguration.enableSubtitles)
               ListTile(
-                  autofocus: true,
                   leading: Icon(
                     betterPlayerControlsConfiguration.subtitlesIcon,
                     color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-                  )
+                  ),
                   title: Text(
                     translations.overflowMenuSubtitles,
                     style: _getOverflowMenuElementTextStyle(false),
                   ),
                   focusColor: Colors.blue,
-                  autofo
                   onTap: () {
                     Navigator.of(context).pop();
                     _showSubtitlesSelectionWidget();
@@ -121,17 +118,15 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
               // }),
             if (betterPlayerControlsConfiguration.enableQualities)
               ListTile(
-                autofocus: true,
                 leading: Icon(
                   betterPlayerControlsConfiguration.qualitiesIcon,
                   color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-                )
+                ),
                 title: Text(
                   translations.overflowMenuQuality,
                   style: _getOverflowMenuElementTextStyle(false),
                 ),
                 focusColor: Colors.blue,
-                autofo
                 onTap: () {
                   Navigator.of(context).pop();
                   _showQualitiesSelectionWidget();
@@ -145,17 +140,15 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
               // }),
             if (betterPlayerControlsConfiguration.enableAudioTracks)
               ListTile(
-                  autofocus: true,
                   leading: Icon(
                     betterPlayerControlsConfiguration.audioTracksIcon,
                     color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-                  )
+                  ),
                   title: Text(
                     translations.overflowMenuAudioTracks,
                     style: _getOverflowMenuElementTextStyle(false),
                   ),
                   focusColor: Colors.blue,
-                  autofo
                   onTap: () {
                     Navigator.of(context).pop();
                     _showAudioTracksSelectionWidget();
