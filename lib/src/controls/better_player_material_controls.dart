@@ -1,5 +1,6 @@
 // Dart imports:
 import 'dart:async';
+import 'dart:developer';
 
 // Project imports:
 import 'package:better_player/src/configuration/better_player_controls_configuration.dart';
@@ -437,14 +438,35 @@ class _BetterPlayerMaterialControlsState
   }
 
   Widget _buildForwardButton() {
-    return _buildHitAreaClickableButton(
-      icon: Icon(
-        _controlsConfiguration.skipForwardIcon,
-        size: 24,
-        color: _controlsConfiguration.iconsColor,
+    return BetterPlayerMaterialClickableWidget(
+      onTap: () {
+        log('avanti!');
+      },
+      child: AnimatedOpacity(
+        // opacity: _hideStuff ? 0.0 : 1.0,
+        // duration: _controlsConfiguration.controlsHideTime,
+        child: ClipRect(
+          child: Container(
+            height: _controlsConfiguration.controlBarHeight,
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Icon(
+              _controlsConfiguration.skipForwardIcon,
+              size: 24,
+              color: _controlsConfiguration.iconsColor,
+            ),
+          ),
+        ),
       ),
-      onClicked: skipForward,
     );
+
+    // return _buildHitAreaClickableButton(
+    //   icon: Icon(
+    //     _controlsConfiguration.skipForwardIcon,
+    //     size: 24,
+    //     color: _controlsConfiguration.iconsColor,
+    //   ),
+    //   onClicked: skipForward,
+    // );
   }
 
   Widget _buildReplayButton(VideoPlayerController controller) {
