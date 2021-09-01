@@ -66,9 +66,12 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
 
   Widget _buildMoreOptionsList() {
     final translations = betterPlayerController!.translations;
-    return Expanded(
+    return SingleChildScrollView(
+      // ignore: avoid_unnecessary_containers
+      child: Expanded(
         child: ListView(
           shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           children: [
             if (betterPlayerControlsConfiguration.enablePlaybackSpeed)
               Container (
@@ -167,21 +170,22 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
               //   Navigator.of(context).pop();
               //   _showAudioTracksSelectionWidget();
               // }),
-            // if (betterPlayerControlsConfiguration
-            //     .overflowMenuCustomItems.isNotEmpty)
-            //   ...betterPlayerControlsConfiguration.overflowMenuCustomItems.map(
-            //     (customItem) => _buildMoreOptionsListRow(
-            //       customItem.icon,
-            //       customItem.title,
-            //       () {
-            //         Navigator.of(context).pop();
-            //         customItem.onClicked.call();
-            //       },
-            //     ),
-            //   )
+            if (betterPlayerControlsConfiguration
+                .overflowMenuCustomItems.isNotEmpty)
+              ...betterPlayerControlsConfiguration.overflowMenuCustomItems.map(
+                (customItem) => _buildMoreOptionsListRow(
+                  customItem.icon,
+                  customItem.title,
+                  () {
+                    Navigator.of(context).pop();
+                    customItem.onClicked.call();
+                  },
+                ),
+              )
           ],
         ),
-      );
+      ),
+    );
   }
 
   Widget _buildMoreOptionsListRow(
