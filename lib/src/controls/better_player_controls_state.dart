@@ -74,94 +74,94 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
           physics: NeverScrollableScrollPhysics(),
           children: [
             if (betterPlayerControlsConfiguration.enablePlaybackSpeed)
-              ListTile(
-                autofocus: true,
-                leading: Icon(
-                  betterPlayerControlsConfiguration.playbackSpeedIcon,
-                  color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-                ),
-                title: Text(
-                  translations.overflowMenuPlaybackSpeed,
-                  style: _getOverflowMenuElementTextStyle(false),
-                ),
-                focusColor: Colors.blue,
-                onTap: () {
-                  Navigator.of(context).pop();
-                  _showSpeedChooserWidget();
-                },
-              ),
-              // buildMoreOptionsListRow(
+              // ListTile(
+              //   autofocus: true,
+              //   leading: Icon(
               //     betterPlayerControlsConfiguration.playbackSpeedIcon,
-              //     translations.overflowMenuPlaybackSpeed, () {
-              //   Navigator.of(context).pop();
-              //   _showSpeedChooserWidget();
-              // }),
+              //     color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
+              //   ),
+              //   title: Text(
+              //     translations.overflowMenuPlaybackSpeed,
+              //     style: _getOverflowMenuElementTextStyle(false),
+              //   ),
+              //   focusColor: Colors.blue,
+              //   onTap: () {
+              //     Navigator.of(context).pop();
+              //     _showSpeedChooserWidget();
+              //   },
+              // ),
+              _buildMoreOptionsListRow(
+                  betterPlayerControlsConfiguration.playbackSpeedIcon,
+                  translations.overflowMenuPlaybackSpeed, () {
+                Navigator.of(context).pop();
+                _showSpeedChooserWidget();
+              }, true),
             if (betterPlayerControlsConfiguration.enableSubtitles)
-              ListTile(
-                leading: Icon(
-                  betterPlayerControlsConfiguration.subtitlesIcon,
-                  color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-                ),
-                title: Text(
-                  translations.overflowMenuSubtitles,
-                  style: _getOverflowMenuElementTextStyle(false),
-                ),
-                focusColor: Colors.blue,
-                onTap: () {
-                  Navigator.of(context).pop();
-                  _showSubtitlesSelectionWidget();
-                },
-              ),
-              // _buildMoreOptionsListRow(
+              // ListTile(
+              //   leading: Icon(
               //     betterPlayerControlsConfiguration.subtitlesIcon,
-              //     translations.overflowMenuSubtitles, () {
-              //   Navigator.of(context).pop();
-              //   _showSubtitlesSelectionWidget();
-              // }),
+              //     color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
+              //   ),
+              //   title: Text(
+              //     translations.overflowMenuSubtitles,
+              //     style: _getOverflowMenuElementTextStyle(false),
+              //   ),
+              //   focusColor: Colors.blue,
+              //   onTap: () {
+              //     Navigator.of(context).pop();
+              //     _showSubtitlesSelectionWidget();
+              //   },
+              // ),
+              _buildMoreOptionsListRow(
+                  betterPlayerControlsConfiguration.subtitlesIcon,
+                  translations.overflowMenuSubtitles, () {
+                Navigator.of(context).pop();
+                _showSubtitlesSelectionWidget();
+              }, false),
             if (betterPlayerControlsConfiguration.enableQualities)
-              ListTile(
-                leading: Icon(
-                  betterPlayerControlsConfiguration.qualitiesIcon,
-                  color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-                ),
-                title: Text(
-                  translations.overflowMenuQuality,
-                  style: _getOverflowMenuElementTextStyle(false),
-                ),
-                focusColor: Colors.blue,
-                onTap: () {
-                  Navigator.of(context).pop();
-                  _showQualitiesSelectionWidget();
-                },
-              ),
-              // buildMoreOptionsListRow(
+              // ListTile(
+              //   leading: Icon(
               //     betterPlayerControlsConfiguration.qualitiesIcon,
-              //     translations.overflowMenuQuality, () {
-              //   Navigator.of(context).pop();
-              //   _showQualitiesSelectionWidget();
-              // }),
+              //     color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
+              //   ),
+              //   title: Text(
+              //     translations.overflowMenuQuality,
+              //     style: _getOverflowMenuElementTextStyle(false),
+              //   ),
+              //   focusColor: Colors.blue,
+              //   onTap: () {
+              //     Navigator.of(context).pop();
+              //     _showQualitiesSelectionWidget();
+              //   },
+              // ),
+              _buildMoreOptionsListRow(
+                  betterPlayerControlsConfiguration.qualitiesIcon,
+                  translations.overflowMenuQuality, () {
+                Navigator.of(context).pop();
+                _showQualitiesSelectionWidget();
+              }, false),
             if (betterPlayerControlsConfiguration.enableAudioTracks)
-              ListTile(
-                leading: Icon(
-                  betterPlayerControlsConfiguration.audioTracksIcon,
-                  color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-                ),
-                title: Text(
-                  translations.overflowMenuAudioTracks,
-                  style: _getOverflowMenuElementTextStyle(false),
-                ),
-                focusColor: Colors.blue,
-                onTap: () {
-                  Navigator.of(context).pop();
-                  _showAudioTracksSelectionWidget();
-                },
-              ),
-              // _buildMoreOptionsListRow(
+              // ListTile(
+              //   leading: Icon(
               //     betterPlayerControlsConfiguration.audioTracksIcon,
-              //     translations.overflowMenuAudioTracks, () {
-              //   Navigator.of(context).pop();
-              //   _showAudioTracksSelectionWidget();
-              // }),
+              //     color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
+              //   ),
+              //   title: Text(
+              //     translations.overflowMenuAudioTracks,
+              //     style: _getOverflowMenuElementTextStyle(false),
+              //   ),
+              //   focusColor: Colors.blue,
+              //   onTap: () {
+              //     Navigator.of(context).pop();
+              //     _showAudioTracksSelectionWidget();
+              //   },
+              // ),
+              _buildMoreOptionsListRow(
+                  betterPlayerControlsConfiguration.audioTracksIcon,
+                  translations.overflowMenuAudioTracks, () {
+                Navigator.of(context).pop();
+                _showAudioTracksSelectionWidget();
+              }, false),
             if (betterPlayerControlsConfiguration
                 .overflowMenuCustomItems.isNotEmpty)
               ...betterPlayerControlsConfiguration.overflowMenuCustomItems.map(
@@ -181,13 +181,13 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
   }
 
   Widget _buildMoreOptionsListRow(
-      IconData icon, String name, void Function() onTap) {
+      IconData icon, String name, void Function() onTap, bool autofocus) {
     return BetterPlayerMaterialClickableWidget(
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
         child: Focus(
-          autofocus: true,
+          autofocus: autofocus,
           child: Row(
             children: [
               const SizedBox(width: 8),
