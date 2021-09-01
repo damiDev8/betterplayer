@@ -66,9 +66,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
 
   Widget _buildMoreOptionsList() {
     final translations = betterPlayerController!.translations;
-    return SingleChildScrollView(
-      // ignore: avoid_unnecessary_containers
-      child: Expanded(
+    return Expanded(
         child: ListView(
           children: [
             if (betterPlayerControlsConfiguration.enablePlaybackSpeed)
@@ -182,8 +180,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
               )
           ],
         ),
-      ),
-    );
+      );
   }
 
   Widget _buildMoreOptionsListRow(
