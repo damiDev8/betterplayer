@@ -270,7 +270,7 @@ class _BetterPlayerMaterialControlsState
     return BetterPlayerMaterialClickableWidget(
       onTap: () {
         onShowMoreClicked(_onPlayPause);
-        _onPlayPause();
+        _onPlayPause(forcePause: true);
       },
       child: Padding(
         padding: const EdgeInsets.all(8),
@@ -708,7 +708,7 @@ class _BetterPlayerMaterialControlsState
     });
   }
 
-  void _onPlayPause() {
+  void _onPlayPause({bool? forcePause = false}) {
     bool isFinished = false;
 
     if (_latestValue?.position != null && _latestValue?.duration != null) {
@@ -716,7 +716,7 @@ class _BetterPlayerMaterialControlsState
     }
 
     setState(() {
-      if (_controller!.value.isPlaying) {
+      if (forcePause == true || _controller!.value.isPlaying) {
         _hideStuff = false;
         _hideTimer?.cancel();
         _betterPlayerController!.pause();

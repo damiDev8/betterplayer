@@ -345,6 +345,7 @@ class _BetterPlayerCupertinoControlsState
     return GestureDetector(
       onTap: () {
         onShowMoreClicked(_onPlayPause);
+        _onPlayPause(forcePause: true);
       },
       child: AnimatedOpacity(
         opacity: _hideStuff ? 0.0 : 1.0,
@@ -705,14 +706,14 @@ class _BetterPlayerCupertinoControlsState
     );
   }
 
-  void _onPlayPause() {
+  void _onPlayPause({bool? forcePause = false}) {
     bool isFinished = false;
 
     if (_latestValue?.position != null && _latestValue?.duration != null) {
       isFinished = _latestValue!.position >= _latestValue!.duration!;
     }
     setState(() {
-      if (_controller!.value.isPlaying) {
+      if (forcePause == true || _controller!.value.isPlaying) {
         _hideStuff = false;
         _hideTimer?.cancel();
         _betterPlayerController!.pause();
