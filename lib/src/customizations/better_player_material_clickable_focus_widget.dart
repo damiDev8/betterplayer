@@ -9,8 +9,9 @@ class BetterPlayerMaterialClickableFocusWidget extends StatefulWidget {
   final bool autofocus;
   final Color color;
   final TextStyle Function(bool) style;
+  final bool iconVisible;
 
-  BetterPlayerMaterialClickableFocusWidget({required this.icon, required this.name, required this.onTap, required this.autofocus, required this.color, required this.style});
+  BetterPlayerMaterialClickableFocusWidget({required this.iconVisible, required this.icon, required this.name, required this.onTap, required this.autofocus, required this.color, required this.style});
 
   @override
   _BetterPlayerMaterialClickableFocusWidgetState createState() => _BetterPlayerMaterialClickableFocusWidgetState();
@@ -33,9 +34,12 @@ class _BetterPlayerMaterialClickableFocusWidgetState extends State<BetterPlayerM
         child: Focus(
           autofocus: widget.autofocus,
           child: ListTile(
-            leading: Icon(
-              widget.icon,
-              color: widget.color,
+            leading:Visibility(
+              visible: widget.iconVisible,
+              child: Icon(
+                Icons.check_outlined,
+                color: widget.color,
+              )
             ),
             title: Text(
               widget.name,

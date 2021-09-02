@@ -94,9 +94,9 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
               _buildMoreOptionsListRow(
                   betterPlayerControlsConfiguration.playbackSpeedIcon,
                   translations.overflowMenuPlaybackSpeed, () {
-                Navigator.of(context).pop();
-                _showSpeedChooserWidget();
-              }, true),
+                  Navigator.of(context).pop();
+                  _showSpeedChooserWidget();
+                }, true),
             if (betterPlayerControlsConfiguration.enableSubtitles)
               // ListTile(
               //   leading: Icon(
@@ -184,6 +184,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
   Widget _buildMoreOptionsListRow(
       IconData icon, String name, void Function() onTap, bool autofocus) {
     return BetterPlayerMaterialClickableFocusWidget(
+        iconVisible: true,
         icon: icon,
         name: name,
         onTap: onTap,
@@ -209,6 +210,18 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
     final bool isSelected =
         betterPlayerController!.videoPlayerController!.value.speed == value;
 
+    return BetterPlayerMaterialClickableFocusWidget(
+        iconVisible: isSelected,
+        icon: Icons.check_outlined,
+        name: "$value x",
+        onTap: () {
+          Navigator.of(context).pop();
+          betterPlayerController!.setSpeed(value);
+        },
+        autofocus: isSelected,
+        color:  betterPlayerControlsConfiguration.overflowModalTextColor,
+        style: _getOverflowMenuElementTextStyle
+    );
     return BetterPlayerMaterialClickableWidget(
       onTap: () {
         Navigator.of(context).pop();
