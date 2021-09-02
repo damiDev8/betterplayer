@@ -44,7 +44,7 @@ class _BetterPlayerMaterialClickableFocusWidgetState extends State<BetterPlayerM
             ),
             focusColor: Colors.blue,
             selected: focus,
-            selectedTileColor: Colors.grey[50],
+            selectedTileColor: Colors.blueGrey.withOpacity(0.5),
           ),
           onFocusChange: (isFocus) {
             BetterPlayerUtils.log("Failed to parse subtitle line");
