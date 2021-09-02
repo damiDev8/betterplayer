@@ -269,7 +269,7 @@ class _BetterPlayerMaterialControlsState
   Widget _buildMoreButton() {
     return BetterPlayerMaterialClickableWidget(
       onTap: () {
-        onShowMoreClicked(_onPlayPause);
+        onShowMoreClicked(_onBottomMenuClose);
         _onPlayPause(forcePause: true);
       },
       child: Padding(
@@ -708,6 +708,10 @@ class _BetterPlayerMaterialControlsState
         });
       });
     });
+  }
+
+  void _onBottomMenuClose() {
+    playFocusNode.requestFocus();
   }
 
   void _onPlayPause({bool? forcePause = false}) {

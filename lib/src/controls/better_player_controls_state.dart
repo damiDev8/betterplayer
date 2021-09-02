@@ -156,7 +156,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         onTap: () {
           Navigator.of(context).pop();
           betterPlayerController!.setSpeed(value);
-          //startFn();
+          startFn();
         },
         autofocus: autofocus,
         color:  betterPlayerControlsConfiguration.overflowModalTextColor,
@@ -223,7 +223,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         onTap: () {
           Navigator.of(context).pop();
           betterPlayerController!.setupSubtitleSource(subtitlesSource);
-          //startFn();
+          startFn();
         },
         autofocus: autofocus,
         color:  betterPlayerControlsConfiguration.overflowModalTextColor,
@@ -320,7 +320,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         onTap: () {
           Navigator.of(context).pop();
           betterPlayerController!.setTrack(track);
-          //startFn();
+          startFn();
         },
         autofocus: autofocus,
         color:  betterPlayerControlsConfiguration.overflowModalTextColor,
@@ -424,7 +424,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         onTap: () {
           Navigator.of(context).pop();
           betterPlayerController!.setAudioTrack(audioTrack);
-          //startFn();
+          startFn();
         },
         autofocus: autofocus,
         color:  betterPlayerControlsConfiguration.overflowModalTextColor,
