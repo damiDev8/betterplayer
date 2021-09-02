@@ -34,10 +34,10 @@ class _BetterPlayerMaterialClickableFocusWidgetState extends State<BetterPlayerM
         child: Focus(
           autofocus: widget.autofocus,
           child: ListTile(
-            leading:Visibility(
+            leading: Visibility(
               visible: widget.iconVisible,
               child: Icon(
-                Icons.check_outlined,
+                widget.icon,
                 color: widget.color,
               )
             ),
