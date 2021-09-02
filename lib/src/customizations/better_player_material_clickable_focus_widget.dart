@@ -32,7 +32,7 @@ class _BetterPlayerMaterialClickableFocusWidgetState extends State<BetterPlayerM
       onTap: widget.onTap,
       child: Container(
         child: Focus(
-          // autofocus: widget.autofocus,
+          autofocus: focus,
           child: ListTile(
             leading: Visibility(
               visible: widget.iconVisible,
