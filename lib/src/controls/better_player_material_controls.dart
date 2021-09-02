@@ -653,6 +653,7 @@ class _BetterPlayerMaterialControlsState
   void cancelAndRestartTimer() {
     _hideTimer?.cancel();
     _startHideTimer();
+    playFocusNode.requestFocus();
 
     setState(() {
       _hideStuff = false;
@@ -680,9 +681,7 @@ class _BetterPlayerMaterialControlsState
 
     _controlsVisibilityStreamSubscription =
         _betterPlayerController!.controlsVisibilityStream.listen((state) {
-          if(!state) {
             playFocusNode.requestFocus();
-          }
       setState(() {
         _hideStuff = !state;
       });
