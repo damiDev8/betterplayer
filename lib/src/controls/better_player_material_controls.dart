@@ -680,14 +680,17 @@ class _BetterPlayerMaterialControlsState
 
     _controlsVisibilityStreamSubscription =
         _betterPlayerController!.controlsVisibilityStream.listen((state) {
-      setState(() {
-        _hideStuff = !state;
-      });
-      if (!_hideStuff) {
-        cancelAndRestartTimer();
-      } else {
-        playFocusNode.requestFocus();
-      }
+          if(state != _hideStuff) {
+            setState(() {
+              _hideStuff = !state;
+            });
+            if (!_hideStuff) {
+              playFocusNode.requestFocus();
+              cancelAndRestartTimer();
+            } else {
+
+            }
+          }
     });
   }
 
