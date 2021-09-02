@@ -680,7 +680,7 @@ class _BetterPlayerMaterialControlsState
 
     _controlsVisibilityStreamSubscription =
         _betterPlayerController!.controlsVisibilityStream.listen((state) {
-          if(state){
+          if(!state){
             playFocusNode.requestFocus();
           }
       setState(() {
