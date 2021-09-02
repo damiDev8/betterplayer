@@ -29,8 +29,7 @@ class _BetterPlayerMaterialClickableFocusWidgetState extends State<BetterPlayerM
   Widget build(BuildContext context) {
     return BetterPlayerMaterialClickableWidget(
       onTap: widget.onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+      child: Container(
         child: Focus(
           autofocus: widget.autofocus,
           child: ListTile(
