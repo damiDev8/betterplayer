@@ -32,7 +32,7 @@ class _BetterPlayerMaterialClickableFocusWidgetState extends State<BetterPlayerM
       onTap: widget.onTap,
       child: Container(
         child: Focus(
-          autofocus: widget.autofocus,
+          // autofocus: widget.autofocus,
           child: ListTile(
             leading: Visibility(
               visible: widget.iconVisible,
@@ -45,7 +45,7 @@ class _BetterPlayerMaterialClickableFocusWidgetState extends State<BetterPlayerM
               widget.name,
               style: widget.style(false),
             ),
-            focusColor: Colors.blue,
+            // focusColor: Colors.blue,
             selected: focus,
             selectedTileColor: Colors.blueGrey.withOpacity(0.5),
           ),
