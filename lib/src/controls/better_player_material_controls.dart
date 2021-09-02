@@ -653,7 +653,6 @@ class _BetterPlayerMaterialControlsState
   void cancelAndRestartTimer() {
     _hideTimer?.cancel();
     _startHideTimer();
-    playFocusNode.requestFocus();
 
     setState(() {
       _hideStuff = false;
@@ -696,7 +695,7 @@ class _BetterPlayerMaterialControlsState
   void _onExpandCollapse() {
     setState(() {
       _hideStuff = true;
-
+      playFocusNode.requestFocus();
       _betterPlayerController!.toggleFullScreen();
       _showAfterExpandCollapseTimer =
           Timer(_controlsConfiguration.controlsHideTime, () {
