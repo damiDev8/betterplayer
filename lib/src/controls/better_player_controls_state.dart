@@ -111,6 +111,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                   () {
                     Navigator.of(context).pop();
                     customItem.onClicked.call();
+                    startFn();
                   }, false
                 ),
               )
