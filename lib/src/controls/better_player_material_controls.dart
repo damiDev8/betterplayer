@@ -783,8 +783,8 @@ class _BetterPlayerMaterialControlsState
   }
 
   void _onPlayerHide() {
-    _betterPlayerController!.toggleControlsVisibility(!_hideStuff);
     playFocusNode.requestFocus();
+    _betterPlayerController!.toggleControlsVisibility(!_hideStuff);
     widget.onControlsVisibilityChanged(!_hideStuff);
   }
 
