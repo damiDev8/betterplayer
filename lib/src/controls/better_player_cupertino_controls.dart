@@ -344,7 +344,7 @@ class _BetterPlayerCupertinoControlsState
   ) {
     return GestureDetector(
       onTap: () {
-        onShowMoreClicked();
+        onShowMoreClicked(_onPlayPause);
       },
       child: AnimatedOpacity(
         opacity: _hideStuff ? 0.0 : 1.0,

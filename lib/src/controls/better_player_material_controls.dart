@@ -269,7 +269,7 @@ class _BetterPlayerMaterialControlsState
   Widget _buildMoreButton() {
     return BetterPlayerMaterialClickableWidget(
       onTap: () {
-        onShowMoreClicked();
+        onShowMoreClicked(_onPlayPause);
         _onPlayPause();
       },
       child: Padding(

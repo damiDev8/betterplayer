@@ -61,11 +61,11 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
     betterPlayerController!.seekTo(Duration(milliseconds: min(skip, end)));
   }
 
-  void onShowMoreClicked() {
-    _showModalBottomSheet([_buildMoreOptionsList()]);
+  void onShowMoreClicked(void Function() startFn) {
+    _showModalBottomSheet([_buildMoreOptionsList(startFn)]);
   }
 
-  Widget _buildMoreOptionsList() {
+  Widget _buildMoreOptionsList(void Function() startFn) {
     final translations = betterPlayerController!.translations;
     return SingleChildScrollView(
       // ignore: avoid_unnecessary_containers
@@ -75,27 +75,11 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
           physics: NeverScrollableScrollPhysics(),
           children: [
             if (betterPlayerControlsConfiguration.enablePlaybackSpeed)
-              // ListTile(
-              //   autofocus: true,
-              //   leading: Icon(
-              //     betterPlayerControlsConfiguration.playbackSpeedIcon,
-              //     color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-              //   ),
-              //   title: Text(
-              //     translations.overflowMenuPlaybackSpeed,
-              //     style: _getOverflowMenuElementTextStyle(false),
-              //   ),
-              //   focusColor: Colors.blue,
-              //   onTap: () {
-              //     Navigator.of(context).pop();
-              //     _showSpeedChooserWidget();
-              //   },
-              // ),
               _buildMoreOptionsListRow(
                   betterPlayerControlsConfiguration.playbackSpeedIcon,
                   translations.overflowMenuPlaybackSpeed, () {
                   Navigator.of(context).pop();
-                  _showSpeedChooserWidget();
+                  _showSpeedChooserWidget(startFn);
                 }, true),
             if (betterPlayerControlsConfiguration.enableSubtitles)
               // ListTile(
@@ -193,20 +177,20 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         style: _getOverflowMenuElementTextStyle);
   }
 
-  void _showSpeedChooserWidget() {
+  void _showSpeedChooserWidget(void Function() startFn) {
     _showModalBottomSheet([
-      _buildSpeedRow(0.25, true),
-      _buildSpeedRow(0.5, false),
-      _buildSpeedRow(0.75, false),
-      _buildSpeedRow(1.0, false),
-      _buildSpeedRow(1.25, false),
-      _buildSpeedRow(1.5, false),
-      _buildSpeedRow(1.75, false),
-      _buildSpeedRow(2.0, false),
+      _buildSpeedRow(0.25, true, startFn),
+      _buildSpeedRow(0.5, false, startFn),
+      _buildSpeedRow(0.75, false, startFn),
+      _buildSpeedRow(1.0, false, startFn),
+      _buildSpeedRow(1.25, false, startFn),
+      _buildSpeedRow(1.5, false, startFn),
+      _buildSpeedRow(1.75, false, startFn),
+      _buildSpeedRow(2.0, false, startFn),
     ]);
   }
 
-  Widget _buildSpeedRow(double value, bool autofocus) {
+  Widget _buildSpeedRow(double value, bool autofocus, void Function() startFn) {
     final bool isSelected =
         betterPlayerController!.videoPlayerController!.value.speed == value;
 
@@ -217,6 +201,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         onTap: () {
           Navigator.of(context).pop();
           betterPlayerController!.setSpeed(value);
+          startFn();
         },
         autofocus: autofocus,
         color:  betterPlayerControlsConfiguration.overflowModalTextColor,
