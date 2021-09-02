@@ -743,6 +743,7 @@ class _BetterPlayerMaterialControlsState
     }
     playFocusNode.requestFocus();
     _hideTimer = Timer(const Duration(seconds: 3), () {
+      playFocusNode.requestFocus();
       setState(() {
         _hideStuff = true;
       });
