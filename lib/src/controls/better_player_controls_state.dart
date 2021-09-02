@@ -195,18 +195,18 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
 
   void _showSpeedChooserWidget() {
     _showModalBottomSheet([
-      _buildSpeedRow(0.25),
-      _buildSpeedRow(0.5),
-      _buildSpeedRow(0.75),
-      _buildSpeedRow(1.0),
-      _buildSpeedRow(1.25),
-      _buildSpeedRow(1.5),
-      _buildSpeedRow(1.75),
-      _buildSpeedRow(2.0),
+      _buildSpeedRow(0.25, true),
+      _buildSpeedRow(0.5, false),
+      _buildSpeedRow(0.75, false),
+      _buildSpeedRow(1.0, false),
+      _buildSpeedRow(1.25, false),
+      _buildSpeedRow(1.5, false),
+      _buildSpeedRow(1.75, false),
+      _buildSpeedRow(2.0, false),
     ]);
   }
 
-  Widget _buildSpeedRow(double value) {
+  Widget _buildSpeedRow(double value, bool autofocus) {
     final bool isSelected =
         betterPlayerController!.videoPlayerController!.value.speed == value;
 
@@ -218,7 +218,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
           Navigator.of(context).pop();
           betterPlayerController!.setSpeed(value);
         },
-        autofocus: isSelected,
+        autofocus: autofocus,
         color:  betterPlayerControlsConfiguration.overflowModalTextColor,
         style: _getOverflowMenuElementTextStyle
     );
