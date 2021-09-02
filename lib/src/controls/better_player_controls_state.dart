@@ -8,6 +8,7 @@ import 'package:better_player/src/asms/better_player_asms_audio_track.dart';
 import 'package:better_player/src/asms/better_player_asms_track.dart';
 import 'package:better_player/src/controls/better_player_clickable_widget.dart';
 import 'package:better_player/src/core/better_player_utils.dart';
+import 'package:better_player/src/customizations/better_player_material_clickable_focus_widget.dart';
 import 'package:better_player/src/video_player/video_player.dart';
 
 // Flutter imports:
@@ -182,44 +183,13 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
 
   Widget _buildMoreOptionsListRow(
       IconData icon, String name, void Function() onTap, bool autofocus) {
-    return BetterPlayerMaterialClickableWidget(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-        child: Focus(
-          autofocus: autofocus,
-          child: ListTile(
-            leading: Icon(
-              icon,
-              color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-            ),
-            title: Text(
-              name,
-              style: _getOverflowMenuElementTextStyle(false),
-            ),
-            focusColor: Colors.blue
-          ),
-          onFocusChange: (e) {
-            BetterPlayerUtils.log("Failed to parse subtitle line");
-          }
-
-          // child: Row(
-          //   children: [
-          //     const SizedBox(width: 8),
-          //     Icon(
-          //       icon,
-          //       color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-          //     ),
-          //     const SizedBox(width: 16),
-          //     Text(
-          //       name,
-          //       style: _getOverflowMenuElementTextStyle(false),
-          //     ),
-          //   ],
-          // ),
-        ),
-      ),
-    );
+    return BetterPlayerMaterialClickableFocusWidget(
+        icon: icon,
+        name: name,
+        onTap: onTap,
+        autofocus: autofocus,
+        color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
+        style: _getOverflowMenuElementTextStyle);
   }
 
   void _showSpeedChooserWidget() {
