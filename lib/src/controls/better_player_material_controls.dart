@@ -684,8 +684,9 @@ class _BetterPlayerMaterialControlsState
         _hideStuff = !state;
       });
       if (!_hideStuff) {
-        playFocusNode.requestFocus();
         cancelAndRestartTimer();
+      } else {
+        playFocusNode.requestFocus();
       }
     });
   }
@@ -735,6 +736,7 @@ class _BetterPlayerMaterialControlsState
       return;
     }
     _hideTimer = Timer(const Duration(seconds: 3), () {
+      playFocusNode.requestFocus();
       setState(() {
         _hideStuff = true;
       });
