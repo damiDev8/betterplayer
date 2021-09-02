@@ -48,7 +48,7 @@ class _BetterPlayerMaterialControlsState
   VideoPlayerController? _controller;
   BetterPlayerController? _betterPlayerController;
   StreamSubscription? _controlsVisibilityStreamSubscription;
-
+  FocusNode playFocusNode = FocusNode(debugLabel: 'play button focus node');
   BetterPlayerControlsConfiguration get _controlsConfiguration =>
       widget.controlsConfiguration;
 
@@ -603,6 +603,7 @@ class _BetterPlayerMaterialControlsState
         margin: const EdgeInsets.symmetric(horizontal: 4),
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Focus(
+          focusNode: playFocusNode,
           autofocus: true,
           child: Icon(
             controller.value.isPlaying
@@ -783,6 +784,7 @@ class _BetterPlayerMaterialControlsState
 
   void _onPlayerHide() {
     _betterPlayerController!.toggleControlsVisibility(!_hideStuff);
+    playFocusNode.requestFocus();
     widget.onControlsVisibilityChanged(!_hideStuff);
   }
 

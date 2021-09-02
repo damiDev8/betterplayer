@@ -55,21 +55,6 @@ class _BetterPlayerMaterialClickableFocusWidgetState extends State<BetterPlayerM
               focus = isFocus;
             });
           }
-
-          // child: Row(
-          //   children: [
-          //     const SizedBox(width: 8),
-          //     Icon(
-          //       icon,
-          //       color: betterPlayerControlsConfiguration.overflowMenuIconsColor,
-          //     ),
-          //     const SizedBox(width: 16),
-          //     Text(
-          //       name,
-          //       style: _getOverflowMenuElementTextStyle(false),
-          //     ),
-          //   ],
-          // ),
         ),
       ),
     );
