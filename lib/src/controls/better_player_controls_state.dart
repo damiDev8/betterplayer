@@ -110,8 +110,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                   customItem.title,
                   () {
                     Navigator.of(context).pop();
-                    customItem.onClicked.call();
-                    startFn();
+                    customItem.onClicked.call(startFn);
                   }, false
                 ),
               )
