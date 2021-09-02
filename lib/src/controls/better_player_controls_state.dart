@@ -222,32 +222,6 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         color:  betterPlayerControlsConfiguration.overflowModalTextColor,
         style: _getOverflowMenuElementTextStyle
     );
-    return BetterPlayerMaterialClickableWidget(
-      onTap: () {
-        Navigator.of(context).pop();
-        betterPlayerController!.setSpeed(value);
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-        child: Row(
-          children: [
-            SizedBox(width: isSelected ? 8 : 16),
-            Visibility(
-                visible: isSelected,
-                child: Icon(
-                  Icons.check_outlined,
-                  color:
-                      betterPlayerControlsConfiguration.overflowModalTextColor,
-                )),
-            const SizedBox(width: 16),
-            Text(
-              "$value x",
-              style: _getOverflowMenuElementTextStyle(isSelected),
-            )
-          ],
-        ),
-      ),
-    );
   }
 
   ///Latest value can be null
@@ -289,17 +263,33 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
     }
 
     _showModalBottomSheet(
-        subtitles.map((source) => _buildSubtitlesSourceRow(source)).toList());
+        subtitles.asMap().entries.map((source) => _buildSubtitlesSourceRow(source.value, source.key == 0)).toList());
   }
 
-  Widget _buildSubtitlesSourceRow(BetterPlayerSubtitlesSource subtitlesSource) {
+  Widget _buildSubtitlesSourceRow(BetterPlayerSubtitlesSource subtitlesSource, bool autofocus) {
     final selectedSourceType =
         betterPlayerController!.betterPlayerSubtitlesSource;
     final bool isSelected = (subtitlesSource == selectedSourceType) ||
         (subtitlesSource.type == BetterPlayerSubtitlesSourceType.none &&
             subtitlesSource.type == selectedSourceType!.type);
 
-    return BetterPlayerMaterialClickableWidget(
+    return BetterPlayerMaterialClickableFocusWidget(
+        iconVisible: isSelected,
+        icon: Icons.check_outlined,
+        name: subtitlesSource.type == BetterPlayerSubtitlesSourceType.none
+            ? betterPlayerController!.translations.generalNone
+            : subtitlesSource.name ??
+            betterPlayerController!.translations.generalDefault,
+        onTap: () {
+          Navigator.of(context).pop();
+          betterPlayerController!.setupSubtitleSource(subtitlesSource);
+        },
+        autofocus: autofocus,
+        color:  betterPlayerControlsConfiguration.overflowModalTextColor,
+        style: _getOverflowMenuElementTextStyle
+    );
+
+      BetterPlayerMaterialClickableWidget(
       onTap: () {
         Navigator.of(context).pop();
         betterPlayerController!.setupSubtitleSource(subtitlesSource);
@@ -350,7 +340,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         preferredName =
             asmsTrackNames.length > index ? asmsTrackNames[index] : null;
       }
-      children.add(_buildTrackRow(asmsTracks[index], preferredName));
+      children.add(_buildTrackRow(asmsTracks[index], preferredName, index == 0));
     }
 
     // normal videos
@@ -363,14 +353,14 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
     if (children.isEmpty) {
       children.add(
         _buildTrackRow(BetterPlayerAsmsTrack.defaultTrack(),
-            betterPlayerController!.translations.qualityAuto),
+            betterPlayerController!.translations.qualityAuto, true),
       );
     }
 
     _showModalBottomSheet(children);
   }
 
-  Widget _buildTrackRow(BetterPlayerAsmsTrack track, String? preferredName) {
+  Widget _buildTrackRow(BetterPlayerAsmsTrack track, String? preferredName, bool autofocus) {
     final int width = track.width ?? 0;
     final int height = track.height ?? 0;
     final int bitrate = track.bitrate ?? 0;
@@ -381,6 +371,19 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
     final BetterPlayerAsmsTrack? selectedTrack =
         betterPlayerController!.betterPlayerAsmsTrack;
     final bool isSelected = selectedTrack != null && selectedTrack == track;
+
+    return BetterPlayerMaterialClickableFocusWidget(
+        iconVisible: isSelected,
+        icon: Icons.check_outlined,
+        name: trackName,
+        onTap: () {
+          Navigator.of(context).pop();
+          betterPlayerController!.setTrack(track);
+        },
+        autofocus: autofocus,
+        color:  betterPlayerControlsConfiguration.overflowModalTextColor,
+        style: _getOverflowMenuElementTextStyle
+    );
 
     return BetterPlayerMaterialClickableWidget(
       onTap: () {
@@ -452,7 +455,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
       for (var index = 0; index < asmsTracks.length; index++) {
         final bool isSelected = selectedAsmsAudioTrack != null &&
             selectedAsmsAudioTrack == asmsTracks[index];
-        children.add(_buildAudioTrackRow(asmsTracks[index], isSelected));
+        children.add(_buildAudioTrackRow(asmsTracks[index], isSelected, index == 0));
       }
     }
 
@@ -460,9 +463,9 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
       children.add(
         _buildAudioTrackRow(
           BetterPlayerAsmsAudioTrack(
-            label: betterPlayerController!.translations.generalDefault,
+            label: betterPlayerController!.translations.generalDefault
           ),
-          true,
+          true, true
         ),
       );
     }
@@ -471,7 +474,20 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
   }
 
   Widget _buildAudioTrackRow(
-      BetterPlayerAsmsAudioTrack audioTrack, bool isSelected) {
+      BetterPlayerAsmsAudioTrack audioTrack, bool isSelected, bool autofocus) {
+    return BetterPlayerMaterialClickableFocusWidget(
+        iconVisible: isSelected,
+        icon: Icons.check_outlined,
+        name: audioTrack.label!,
+        onTap: () {
+          Navigator.of(context).pop();
+          betterPlayerController!.setAudioTrack(audioTrack);
+        },
+        autofocus: autofocus,
+        color:  betterPlayerControlsConfiguration.overflowModalTextColor,
+        style: _getOverflowMenuElementTextStyle
+    );
+
     return BetterPlayerMaterialClickableWidget(
       onTap: () {
         Navigator.of(context).pop();
