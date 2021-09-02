@@ -741,8 +741,8 @@ class _BetterPlayerMaterialControlsState
     if (_betterPlayerController!.controlsAlwaysVisible) {
       return;
     }
+    playFocusNode.requestFocus();
     _hideTimer = Timer(const Duration(seconds: 3), () {
-      playFocusNode.requestFocus();
       setState(() {
         _hideStuff = true;
       });
