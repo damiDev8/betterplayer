@@ -680,7 +680,7 @@ class _BetterPlayerMaterialControlsState
 
     _controlsVisibilityStreamSubscription =
         _betterPlayerController!.controlsVisibilityStream.listen((state) {
-          if(state != _hideStuff) {
+          if(state == _hideStuff) {
             setState(() {
               _hideStuff = !state;
             });
