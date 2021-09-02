@@ -270,6 +270,7 @@ class _BetterPlayerMaterialControlsState
     return BetterPlayerMaterialClickableWidget(
       onTap: () {
         onShowMoreClicked();
+        _onPlayPause();
       },
       child: Padding(
         padding: const EdgeInsets.all(8),
@@ -739,6 +740,7 @@ class _BetterPlayerMaterialControlsState
       return;
     }
     _hideTimer = Timer(const Duration(seconds: 3), () {
+      playFocusNode.requestFocus();
       setState(() {
         _hideStuff = true;
       });
