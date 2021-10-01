@@ -22,7 +22,7 @@ class BetterPlayerMaterialClickableWidget extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       color: this.focusNode != null
           ? this.focusNode!.hasFocus
-              ? Colors.blue.withOpacity(0.5)
+              ? Color.fromARGB(150, 51, 147, 208)
               : Colors.transparent
           : Colors.transparent,
       child: InkWell(

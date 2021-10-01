@@ -432,6 +432,7 @@ class _BetterPlayerMaterialControlsState
   Widget _buildSkipButton() {
     return BetterPlayerMaterialClickableWidget(
       onTap: skipBack,
+      focusNode: playFocusNode,
       child: Container(
         height: _controlsConfiguration.controlBarHeight,
         child: ClipRect(
@@ -461,6 +462,7 @@ class _BetterPlayerMaterialControlsState
   Widget _buildForwardButton() {
     return BetterPlayerMaterialClickableWidget(
       onTap: skipForward,
+      focusNode: playFocusNode,
       child: Container(
         height: _controlsConfiguration.controlBarHeight,
         child: ClipRect(
@@ -537,6 +539,7 @@ class _BetterPlayerMaterialControlsState
             onTap: () {
               _betterPlayerController!.playNextVideo();
             },
+            focusNode: playFocusNode,
             child: Align(
               alignment: Alignment.bottomRight,
               child: Container(
@@ -577,6 +580,7 @@ class _BetterPlayerMaterialControlsState
           _betterPlayerController!.setVolume(0.0);
         }
       },
+      focusNode: playFocusNode,
       child: AnimatedOpacity(
         opacity: _hideStuff ? 0.0 : 1.0,
         duration: _controlsConfiguration.controlsHideTime,
