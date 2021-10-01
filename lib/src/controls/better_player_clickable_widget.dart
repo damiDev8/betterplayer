@@ -20,14 +20,11 @@ class BetterPlayerMaterialClickableWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(60),
       ),
       clipBehavior: Clip.antiAlias,
-      color: this.focusNode != null
-          ? this.focusNode!.hasFocus
-              ? Color.fromARGB(150, 51, 147, 208)
-              : Colors.transparent
-          : Colors.transparent,
+      color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
         child: child,
+        focusColor: Color.fromARGB(150, 51, 147, 208),
       ),
     );
   }
