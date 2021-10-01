@@ -17,8 +17,8 @@ class BetterPlayerMaterialClickableWidget extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(60),
       ),
-      clipBehavior: Clip.hardEdge,
-      color: Colors.transparent,
+      clipBehavior: Clip.antiAlias,
+      color: Colors.blue,
       child: InkWell(
         onTap: onTap,
         child: child,
