@@ -49,11 +49,6 @@ class _BetterPlayerMaterialControlsState
   BetterPlayerController? _betterPlayerController;
   StreamSubscription? _controlsVisibilityStreamSubscription;
   FocusNode playFocusNode = FocusNode(debugLabel: 'play button focus node');
-  FocusNode forwardFocusNode =
-      FocusNode(debugLabel: 'forward button focus node');
-  FocusNode backFocusNode =
-      FocusNode(debugLabel: 'backward button focus node');
-
   BetterPlayerControlsConfiguration get _controlsConfiguration =>
       widget.controlsConfiguration;
 
@@ -306,11 +301,11 @@ class _BetterPlayerMaterialControlsState
               child: Row(
                 children: [
                   if (_controlsConfiguration.enablePlayPause)
-                    _buildPlayPause(_controller!)
+                   _buildPlayPause(_controller!) 
                   else
                     const SizedBox(),
-                  _buildSkipButton(),
-                  _buildForwardButton(),
+                    _buildSkipButton(),
+                    _buildForwardButton(),
                   if (_betterPlayerController!.isLiveStream())
                     _buildLiveWidget()
                   else
@@ -437,20 +432,16 @@ class _BetterPlayerMaterialControlsState
   Widget _buildSkipButton() {
     return BetterPlayerMaterialClickableWidget(
       onTap: skipBack,
-      focusNode: backFocusNode,
       child: Container(
         height: _controlsConfiguration.controlBarHeight,
-        child: Focus(
-          focusNode: backFocusNode,
-          child: ClipRect(
-            child: Container(
-              height: _controlsConfiguration.controlBarHeight,
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Icon(
-                _controlsConfiguration.skipBackIcon,
-                size: 24,
-                color: _controlsConfiguration.iconsColor,
-              ),
+        child: ClipRect(
+          child: Container(
+            height: _controlsConfiguration.controlBarHeight,
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Icon(
+              _controlsConfiguration.skipBackIcon,
+              size: 24,
+              color: _controlsConfiguration.iconsColor,
             ),
           ),
         ),
@@ -470,20 +461,16 @@ class _BetterPlayerMaterialControlsState
   Widget _buildForwardButton() {
     return BetterPlayerMaterialClickableWidget(
       onTap: skipForward,
-      focusNode: forwardFocusNode,
       child: Container(
         height: _controlsConfiguration.controlBarHeight,
-        child: Focus(
-          focusNode: forwardFocusNode,
-          child: ClipRect(
-            child: Container(
-              height: _controlsConfiguration.controlBarHeight,
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Icon(
-                _controlsConfiguration.skipForwardIcon,
-                size: 24,
-                color: _controlsConfiguration.iconsColor,
-              ),
+        child: ClipRect(
+          child: Container(
+            height: _controlsConfiguration.controlBarHeight,
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Icon(
+              _controlsConfiguration.skipForwardIcon,
+              size: 24,
+              color: _controlsConfiguration.iconsColor,
             ),
           ),
         ),
@@ -612,7 +599,6 @@ class _BetterPlayerMaterialControlsState
   Widget _buildPlayPause(VideoPlayerController controller) {
     return BetterPlayerMaterialClickableWidget(
       onTap: _onPlayPause,
-      focusNode: playFocusNode,
       child: Container(
         height: double.infinity,
         margin: const EdgeInsets.symmetric(horizontal: 4),
@@ -695,15 +681,17 @@ class _BetterPlayerMaterialControlsState
 
     _controlsVisibilityStreamSubscription =
         _betterPlayerController!.controlsVisibilityStream.listen((state) {
-      if (state == _hideStuff) {
-        setState(() {
-          _hideStuff = !state;
-        });
-        if (!_hideStuff) {
-          playFocusNode.requestFocus();
-          cancelAndRestartTimer();
-        } else {}
-      }
+          if(state == _hideStuff) {
+            setState(() {
+              _hideStuff = !state;
+            });
+            if (!_hideStuff) {
+              playFocusNode.requestFocus();
+              cancelAndRestartTimer();
+            } else {
+
+            }
+          }
     });
   }
 
@@ -751,7 +739,7 @@ class _BetterPlayerMaterialControlsState
     if (_betterPlayerController!.controlsAlwaysVisible) {
       return;
     }
-    // playFocusNode.requestFocus();
+    playFocusNode.requestFocus();
     _hideTimer = Timer(const Duration(seconds: 3), () {
       playFocusNode.requestFocus();
       setState(() {
