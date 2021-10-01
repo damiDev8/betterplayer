@@ -47,7 +47,7 @@ class _BetterPlayerMaterialClickableFocusWidgetState extends State<BetterPlayerM
             ),
             // focusColor: Colors.blue,
             selected: focus,
-            selectedTileColor: Colors.blueGrey.withOpacity(0.5),
+            selectedTileColor: Colors.blue,
           ),
           onFocusChange: (isFocus) {
             BetterPlayerUtils.log("$widget.name $isFocus");
