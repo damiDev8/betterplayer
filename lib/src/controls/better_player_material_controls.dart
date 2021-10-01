@@ -599,6 +599,7 @@ class _BetterPlayerMaterialControlsState
   Widget _buildPlayPause(VideoPlayerController controller) {
     return BetterPlayerMaterialClickableWidget(
       onTap: _onPlayPause,
+      focusNode: playFocusNode,
       child: Container(
         height: double.infinity,
         margin: const EdgeInsets.symmetric(horizontal: 4),
