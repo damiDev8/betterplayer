@@ -9,5 +9,12 @@ class BetterPlayerBottomMenuGenericButton {
   ///Callback when item is clicked
   final void Function() onClicked;
 
-  BetterPlayerBottomMenuGenericButton(this.icon, this.onClicked);
+  final BetterPlayerBottomMenuGenericButtonTypes? buttonType;
+
+  BetterPlayerBottomMenuGenericButton(this.icon, this.onClicked, this.buttonType);
+}
+
+enum BetterPlayerBottomMenuGenericButtonTypes {
+  GENERIC,
+  SHOW_XRAY
 }

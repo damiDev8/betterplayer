@@ -16,6 +16,8 @@ import 'package:better_player/src/video_player/video_player.dart';
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+import '../../better_player.dart';
+
 class BetterPlayerMaterialControls extends StatefulWidget {
   ///Callback used to send information if player bar is hidden or not
   final Function(bool visbility) onControlsVisibilityChanged;
@@ -328,11 +330,17 @@ class _BetterPlayerMaterialControlsState
                     _buildExpandButton()
                   else
                     const SizedBox(),
-                  ..._controlsConfiguration.bottomMenuGenericButtons.map(
-                    (element) => _genericButton(
-                        element.icon,
-                        element.onClicked),
-                  )
+                  ..._controlsConfiguration.bottomMenuGenericButtons
+                      .map((element) {
+                    switch (element.buttonType) {
+                      case BetterPlayerBottomMenuGenericButtonTypes.GENERIC:
+                        return _genericButton(element.icon, element.onClicked);
+                      case BetterPlayerBottomMenuGenericButtonTypes.SHOW_XRAY:
+                        return _showXrayButton(_controller!, element.onClicked);
+                      default:
+                        return _genericButton(element.icon, element.onClicked);
+                    }
+                  })
                 ],
               ),
             ),
@@ -449,6 +457,36 @@ class _BetterPlayerMaterialControlsState
               size: 24,
               color: _controlsConfiguration.iconsColor,
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _showXrayButton(
+      VideoPlayerController videoPlayerController, void Function() onTap) {
+    return BetterPlayerMaterialClickableWidget(
+      onTap: () {
+        videoPlayerController.toggleShowXray();
+        onTap();
+      },
+      child: Container(
+        height: _controlsConfiguration.controlBarHeight,
+        child: ClipRect(
+          child: Container(
+            height: _controlsConfiguration.controlBarHeight,
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: _latestValue != null && _latestValue!.showXray
+                ? Icon(
+                    Icons.label_important_outline,
+                    size: 24,
+                    color: _controlsConfiguration.iconsColor,
+                  )
+                : Icon(
+                    Icons.label_off_outlined,
+                    size: 24,
+                    color: _controlsConfiguration.iconsColor,
+                  ),
           ),
         ),
       ),

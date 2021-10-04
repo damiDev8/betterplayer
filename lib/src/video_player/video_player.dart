@@ -42,6 +42,7 @@ class VideoPlayerValue {
     this.speed = 1.0,
     this.errorDescription,
     this.isPip = false,
+    this.showXray = true,
   });
 
   /// Returns an instance with a `null` [Duration].
@@ -96,6 +97,9 @@ class VideoPlayerValue {
   ///Is in Picture in Picture Mode
   final bool isPip;
 
+  // Show Xray
+  final bool showXray;
+
   /// Indicates whether or not the video has been loaded and is ready to play.
   bool get initialized => duration != null;
 
@@ -131,6 +135,7 @@ class VideoPlayerValue {
     String? errorDescription,
     double? speed,
     bool? isPip,
+    bool? showXray,
   }) {
     return VideoPlayerValue(
       duration: duration ?? this.duration,
@@ -145,6 +150,7 @@ class VideoPlayerValue {
       speed: speed ?? this.speed,
       errorDescription: errorDescription ?? this.errorDescription,
       isPip: isPip ?? this.isPip,
+      showXray: showXray ?? this.showXray,
     );
   }
 
@@ -161,6 +167,7 @@ class VideoPlayerValue {
         'isLooping: $isLooping, '
         'isBuffering: $isBuffering, '
         'volume: $volume, '
+        'showXray: $showXray'
         'errorDescription: $errorDescription)';
   }
 }
@@ -436,6 +443,10 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
   Future<void> play() async {
     value = value.copyWith(isPlaying: true);
     await _applyPlayPause();
+  }
+
+  Future<void> toggleShowXray() async {
+    value = value.copyWith(showXray: !value.showXray);
   }
 
   /// Sets whether or not the video should loop after playing once. See also
