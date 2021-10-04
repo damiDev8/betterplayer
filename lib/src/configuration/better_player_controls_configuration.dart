@@ -3,7 +3,7 @@ import 'dart:ui';
 
 // Flutter imports:
 import 'package:better_player/better_player.dart';
-import 'package:better_player/src/controls/better_player_bottom_menu_generic_button.dart';
+import 'package:better_player/src/customizations/better_player_bottom_menu_generic_button.dart';
 
 // Project imports:
 import 'package:better_player/src/controls/better_player_overflow_menu_item.dart';
