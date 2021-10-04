@@ -778,8 +778,8 @@ class _BetterPlayerMaterialControlsState
   }
 
   Widget _buildProgressBar() {
-    return Expanded(
-        flex: 40,
+    return Container(
+        width: double.infinity,
         child: Container(
           alignment: Alignment.bottomCenter,
           padding: const EdgeInsets.symmetric(horizontal: 12),
