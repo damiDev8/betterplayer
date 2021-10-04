@@ -296,16 +296,16 @@ class _BetterPlayerMaterialControlsState
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
+            if (_betterPlayerController!.isLiveStream())
+              const SizedBox()
+            else
+              _controlsConfiguration.enableProgressBar
+                  ? _buildProgressBar()
+                  : const SizedBox(),
             Expanded(
               flex: 75,
               child: Row(
                 children: [
-                  if (_betterPlayerController!.isLiveStream())
-                    const SizedBox()
-                  else
-                    _controlsConfiguration.enableProgressBar
-                        ? _buildProgressBar()
-                        : const SizedBox(),
                   if (_controlsConfiguration.enablePlayPause)
                     _buildPlayPause(_controller!)
                   else
@@ -327,8 +327,6 @@ class _BetterPlayerMaterialControlsState
                     _buildExpandButton()
                   else
                     const SizedBox(),
-                  _genericButton(
-                      _controlsConfiguration.qualitiesIcon, skipForward),
                 ],
               ),
             ),
@@ -779,7 +777,7 @@ class _BetterPlayerMaterialControlsState
 
   Widget _buildProgressBar() {
     return Expanded(
-        flex: 75,
+        flex: 40,
         child: Container(
           alignment: Alignment.bottomCenter,
           padding: const EdgeInsets.symmetric(horizontal: 12),
