@@ -330,7 +330,7 @@ class _BetterPlayerMaterialControlsState
                     const SizedBox(),
                   ..._controlsConfiguration.bottomMenuGenericButtons.map(
                     (element) => _genericButton(
-                        Icons.precision_manufacturing_outlined,
+                        element.icon,
                         element.onClicked),
                   )
                 ],
