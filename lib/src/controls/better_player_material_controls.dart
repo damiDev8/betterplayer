@@ -296,22 +296,12 @@ class _BetterPlayerMaterialControlsState
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Row(
-              children: [
-                if (_betterPlayerController!.isLiveStream())
-                  const SizedBox()
-                else
-                  _controlsConfiguration.enableProgressBar
-                      ? _buildProgressBar()
-                      : const SizedBox(),
-                if (_betterPlayerController!.isLiveStream())
-                  _buildLiveWidget()
-                else
-                  _controlsConfiguration.enableProgressText
-                      ? Expanded(child: _buildPosition())
-                      : const SizedBox(),
-              ],
-            ),
+            if (_betterPlayerController!.isLiveStream())
+              const SizedBox()
+            else
+              _controlsConfiguration.enableProgressBar
+                  ? _buildProgressBar()
+                  : const SizedBox(),
             Expanded(
               flex: 75,
               child: Row(
@@ -322,6 +312,12 @@ class _BetterPlayerMaterialControlsState
                     const SizedBox(),
                   _buildSkipButton(),
                   _buildForwardButton(),
+                  if (_betterPlayerController!.isLiveStream())
+                    _buildLiveWidget()
+                  else
+                    _controlsConfiguration.enableProgressText
+                        ? Expanded(child: _buildPosition())
+                        : const SizedBox(),
                   const Spacer(),
                   if (_controlsConfiguration.enableMute)
                     _buildMuteButton(_controller)
@@ -331,6 +327,9 @@ class _BetterPlayerMaterialControlsState
                     _buildExpandButton()
                   else
                     const SizedBox(),
+                  _genericButton(Icons.timer, () {}),
+                  _genericButton(Icons.closed_caption, () {}),
+                  _genericButton(Icons.replay, () {})
                 ],
               ),
             ),
