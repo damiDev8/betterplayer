@@ -321,6 +321,7 @@ class _BetterPlayerMaterialControlsState
                     _buildExpandButton()
                   else
                     const SizedBox(),
+                  _genericButton(_controlsConfiguration.qualitiesIcon, skipForward),
                 ],
               ),
             ),
@@ -476,15 +477,26 @@ class _BetterPlayerMaterialControlsState
         ),
       ),
     );
+  }
 
-    // return _buildHitAreaClickableButton(
-    //   icon: Icon(
-    //     _controlsConfiguration.skipForwardIcon,
-    //     size: 24,
-    //     color: _controlsConfiguration.iconsColor,
-    //   ),
-    //   onClicked: skipForward,
-    // );
+  Widget _genericButton(IconData icon, void Function() onTap ) {
+    return BetterPlayerMaterialClickableWidget(
+      onTap: onTap,
+      child: Container(
+        height: _controlsConfiguration.controlBarHeight,
+        child: ClipRect(
+          child: Container(
+            height: _controlsConfiguration.controlBarHeight,
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Icon(
+              icon,
+              size: 24,
+              color: _controlsConfiguration.iconsColor,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _buildReplayButton(VideoPlayerController controller) {
