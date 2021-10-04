@@ -310,8 +310,9 @@ class _BetterPlayerMaterialControlsState
                     _buildPlayPause(_controller!)
                   else
                     const SizedBox(),
-                  _buildSkipButton(),
-                  _buildForwardButton(),
+                  _genericButton(_controlsConfiguration.skipBackIcon, skipBack),
+                  _genericButton(
+                      _controlsConfiguration.skipForwardIcon, skipForward),
                   if (_betterPlayerController!.isLiveStream())
                     _buildLiveWidget()
                   else
@@ -330,7 +331,7 @@ class _BetterPlayerMaterialControlsState
                   _genericButton(Icons.precision_manufacturing_outlined, () {}),
                   _genericButton(Icons.timer_outlined, () {}),
                   _genericButton(Icons.closed_caption, () {}),
-                  _genericButton(Icons.replay, () {})
+                  _genericButton(Icons.replay, restart)
                 ],
               ),
             ),
@@ -396,12 +397,12 @@ class _BetterPlayerMaterialControlsState
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           if (_controlsConfiguration.enableSkips)
-            _buildSkipButton()
+            _genericButton(_controlsConfiguration.skipBackIcon, skipBack)
           else
             const SizedBox(),
           _buildReplayButton(_controller!),
           if (_controlsConfiguration.enableSkips)
-            _buildForwardButton()
+            _genericButton(_controlsConfiguration.skipForwardIcon, skipForward)
           else
             const SizedBox(),
         ],
@@ -426,55 +427,6 @@ class _BetterPlayerMaterialControlsState
               child: Stack(
                 children: [icon!],
               ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSkipButton() {
-    return BetterPlayerMaterialClickableWidget(
-      onTap: skipBack,
-      child: Container(
-        height: _controlsConfiguration.controlBarHeight,
-        child: ClipRect(
-          child: Container(
-            height: _controlsConfiguration.controlBarHeight,
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Icon(
-              _controlsConfiguration.skipBackIcon,
-              size: 24,
-              color: _controlsConfiguration.iconsColor,
-            ),
-          ),
-        ),
-      ),
-    );
-
-    // return _buildHitAreaClickableButton(
-    //   icon: Icon(
-    //     _controlsConfiguration.skipBackIcon,
-    //     size: 24,
-    //     color: _controlsConfiguration.iconsColor,
-    //   ),
-    //   onClicked: skipBack,
-    // );
-  }
-
-  Widget _buildForwardButton() {
-    return BetterPlayerMaterialClickableWidget(
-      onTap: skipForward,
-      child: Container(
-        height: _controlsConfiguration.controlBarHeight,
-        child: ClipRect(
-          child: Container(
-            height: _controlsConfiguration.controlBarHeight,
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Icon(
-              _controlsConfiguration.skipForwardIcon,
-              size: 24,
-              color: _controlsConfiguration.iconsColor,
             ),
           ),
         ),

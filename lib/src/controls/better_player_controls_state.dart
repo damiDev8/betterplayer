@@ -65,6 +65,10 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
     _showModalBottomSheet([_buildMoreOptionsList(startFn)]);
   }
 
+  void restart() {
+    betterPlayerController!.seekTo(Duration(milliseconds: 0));
+  }
+
   Widget _buildMoreOptionsList(void Function() startFn) {
     final translations = betterPlayerController!.translations;
     return SingleChildScrollView(
@@ -78,9 +82,9 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
               _buildMoreOptionsListRow(
                   betterPlayerControlsConfiguration.playbackSpeedIcon,
                   translations.overflowMenuPlaybackSpeed, () {
-                  Navigator.of(context).pop();
-                  _showSpeedChooserWidget(startFn);
-                }, true),
+                Navigator.of(context).pop();
+                _showSpeedChooserWidget(startFn);
+              }, true),
             if (betterPlayerControlsConfiguration.enableSubtitles)
               _buildMoreOptionsListRow(
                   betterPlayerControlsConfiguration.subtitlesIcon,
@@ -106,13 +110,10 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                 .overflowMenuCustomItems.isNotEmpty)
               ...betterPlayerControlsConfiguration.overflowMenuCustomItems.map(
                 (customItem) => _buildMoreOptionsListRow(
-                  customItem.icon,
-                  customItem.title,
-                  () {
-                    Navigator.of(context).pop();
-                    customItem.onClicked.call(startFn);
-                  }, false
-                ),
+                    customItem.icon, customItem.title, () {
+                  Navigator.of(context).pop();
+                  customItem.onClicked.call(startFn);
+                }, false),
               )
           ],
         ),
@@ -159,9 +160,8 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
           startFn();
         },
         autofocus: autofocus,
-        color:  betterPlayerControlsConfiguration.overflowModalTextColor,
-        style: _getOverflowMenuElementTextStyle
-    );
+        color: betterPlayerControlsConfiguration.overflowModalTextColor,
+        style: _getOverflowMenuElementTextStyle);
   }
 
   ///Latest value can be null
@@ -202,11 +202,16 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
           type: BetterPlayerSubtitlesSourceType.none));
     }
 
-    _showModalBottomSheet(
-        subtitles.asMap().entries.map((source) => _buildSubtitlesSourceRow(source.value, source.key == 0, startFn)).toList());
+    _showModalBottomSheet(subtitles
+        .asMap()
+        .entries
+        .map((source) =>
+            _buildSubtitlesSourceRow(source.value, source.key == 0, startFn))
+        .toList());
   }
 
-  Widget _buildSubtitlesSourceRow(BetterPlayerSubtitlesSource subtitlesSource, bool autofocus, void Function() startFn) {
+  Widget _buildSubtitlesSourceRow(BetterPlayerSubtitlesSource subtitlesSource,
+      bool autofocus, void Function() startFn) {
     final selectedSourceType =
         betterPlayerController!.betterPlayerSubtitlesSource;
     final bool isSelected = (subtitlesSource == selectedSourceType) ||
@@ -219,18 +224,17 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         name: subtitlesSource.type == BetterPlayerSubtitlesSourceType.none
             ? betterPlayerController!.translations.generalNone
             : subtitlesSource.name ??
-            betterPlayerController!.translations.generalDefault,
+                betterPlayerController!.translations.generalDefault,
         onTap: () {
           Navigator.of(context).pop();
           betterPlayerController!.setupSubtitleSource(subtitlesSource);
           startFn();
         },
         autofocus: autofocus,
-        color:  betterPlayerControlsConfiguration.overflowModalTextColor,
-        style: _getOverflowMenuElementTextStyle
-    );
+        color: betterPlayerControlsConfiguration.overflowModalTextColor,
+        style: _getOverflowMenuElementTextStyle);
 
-      BetterPlayerMaterialClickableWidget(
+    BetterPlayerMaterialClickableWidget(
       onTap: () {
         Navigator.of(context).pop();
         betterPlayerController!.setupSubtitleSource(subtitlesSource);
@@ -281,7 +285,8 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         preferredName =
             asmsTrackNames.length > index ? asmsTrackNames[index] : null;
       }
-      children.add(_buildTrackRow(asmsTracks[index], preferredName, index == 0, startFn));
+      children.add(_buildTrackRow(
+          asmsTracks[index], preferredName, index == 0, startFn));
     }
 
     // normal videos
@@ -301,7 +306,8 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
     _showModalBottomSheet(children);
   }
 
-  Widget _buildTrackRow(BetterPlayerAsmsTrack track, String? preferredName, bool autofocus, void Function() startFn) {
+  Widget _buildTrackRow(BetterPlayerAsmsTrack track, String? preferredName,
+      bool autofocus, void Function() startFn) {
     final int width = track.width ?? 0;
     final int height = track.height ?? 0;
     final int bitrate = track.bitrate ?? 0;
@@ -323,9 +329,8 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
           startFn();
         },
         autofocus: autofocus,
-        color:  betterPlayerControlsConfiguration.overflowModalTextColor,
-        style: _getOverflowMenuElementTextStyle
-    );
+        color: betterPlayerControlsConfiguration.overflowModalTextColor,
+        style: _getOverflowMenuElementTextStyle);
 
     return BetterPlayerMaterialClickableWidget(
       onTap: () {
@@ -397,26 +402,27 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
       for (var index = 0; index < asmsTracks.length; index++) {
         final bool isSelected = selectedAsmsAudioTrack != null &&
             selectedAsmsAudioTrack == asmsTracks[index];
-        children.add(_buildAudioTrackRow(asmsTracks[index], isSelected, index == 0, startFn));
+        children.add(_buildAudioTrackRow(
+            asmsTracks[index], isSelected, index == 0, startFn));
       }
     }
 
     if (children.isEmpty) {
       children.add(
         _buildAudioTrackRow(
-          BetterPlayerAsmsAudioTrack(
-            label: betterPlayerController!.translations.generalDefault
-          ),
-          true, true, startFn
-        ),
+            BetterPlayerAsmsAudioTrack(
+                label: betterPlayerController!.translations.generalDefault),
+            true,
+            true,
+            startFn),
       );
     }
 
     _showModalBottomSheet(children);
   }
 
-  Widget _buildAudioTrackRow(
-      BetterPlayerAsmsAudioTrack audioTrack, bool isSelected, bool autofocus, void Function() startFn) {
+  Widget _buildAudioTrackRow(BetterPlayerAsmsAudioTrack audioTrack,
+      bool isSelected, bool autofocus, void Function() startFn) {
     return BetterPlayerMaterialClickableFocusWidget(
         iconVisible: isSelected,
         icon: Icons.check_outlined,
@@ -427,9 +433,8 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
           startFn();
         },
         autofocus: autofocus,
-        color:  betterPlayerControlsConfiguration.overflowModalTextColor,
-        style: _getOverflowMenuElementTextStyle
-    );
+        color: betterPlayerControlsConfiguration.overflowModalTextColor,
+        style: _getOverflowMenuElementTextStyle);
 
     return BetterPlayerMaterialClickableWidget(
       onTap: () {
