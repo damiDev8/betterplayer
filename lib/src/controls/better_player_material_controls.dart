@@ -300,6 +300,12 @@ class _BetterPlayerMaterialControlsState
               flex: 75,
               child: Row(
                 children: [
+                  if (_betterPlayerController!.isLiveStream())
+                    const SizedBox()
+                  else
+                    _controlsConfiguration.enableProgressBar
+                        ? _buildProgressBar()
+                        : const SizedBox(),
                   if (_controlsConfiguration.enablePlayPause)
                     _buildPlayPause(_controller!)
                   else
@@ -321,16 +327,11 @@ class _BetterPlayerMaterialControlsState
                     _buildExpandButton()
                   else
                     const SizedBox(),
-                  _genericButton(_controlsConfiguration.qualitiesIcon, skipForward),
+                  _genericButton(
+                      _controlsConfiguration.qualitiesIcon, skipForward),
                 ],
               ),
             ),
-            if (_betterPlayerController!.isLiveStream())
-              const SizedBox()
-            else
-              _controlsConfiguration.enableProgressBar
-                  ? _buildProgressBar()
-                  : const SizedBox(),
           ],
         ),
       ),
@@ -479,7 +480,7 @@ class _BetterPlayerMaterialControlsState
     );
   }
 
-  Widget _genericButton(IconData icon, void Function() onTap ) {
+  Widget _genericButton(IconData icon, void Function() onTap) {
     return BetterPlayerMaterialClickableWidget(
       onTap: onTap,
       child: Container(

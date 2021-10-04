@@ -218,6 +218,10 @@ class _BetterPlayerCupertinoControlsState
                     )
                   : Row(
                       children: <Widget>[
+                        if (_controlsConfiguration.enableProgressBar)
+                          _buildProgressBar()
+                        else
+                          const SizedBox(),
                         if (_controlsConfiguration.enableSkips)
                           _buildSkipBack(iconColor, barHeight)
                         else
@@ -232,10 +236,6 @@ class _BetterPlayerCupertinoControlsState
                           const SizedBox(),
                         if (_controlsConfiguration.enableProgressText)
                           _buildPosition()
-                        else
-                          const SizedBox(),
-                        if (_controlsConfiguration.enableProgressBar)
-                          _buildProgressBar()
                         else
                           const SizedBox(),
                         if (_controlsConfiguration.enableProgressText)
