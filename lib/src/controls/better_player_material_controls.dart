@@ -301,11 +301,11 @@ class _BetterPlayerMaterialControlsState
               child: Row(
                 children: [
                   if (_controlsConfiguration.enablePlayPause)
-                   _buildPlayPause(_controller!) 
+                    _buildPlayPause(_controller!)
                   else
                     const SizedBox(),
-                    _buildSkipButton(),
-                    _buildForwardButton(),
+                  _buildSkipButton(),
+                  _buildForwardButton(),
                   if (_betterPlayerController!.isLiveStream())
                     _buildLiveWidget()
                   else
@@ -681,17 +681,17 @@ class _BetterPlayerMaterialControlsState
 
     _controlsVisibilityStreamSubscription =
         _betterPlayerController!.controlsVisibilityStream.listen((state) {
-          cancelAndRestartTimer();
-          if(state == _hideStuff) {
-            setState(() {
-              _hideStuff = !state;
-            });
-            if (!_hideStuff) {
-              playFocusNode.requestFocus();
-            } else {
-
-            }
-          }
+      if (state) {
+        cancelAndRestartTimer();
+      }
+      if (state == _hideStuff) {
+        setState(() {
+          _hideStuff = !state;
+        });
+        if (!_hideStuff) {
+          playFocusNode.requestFocus();
+        } else {}
+      }
     });
   }
 
