@@ -7,7 +7,7 @@ class BetterPlayerBottomMenuGenericButton {
   final IconData icon;
 
   ///Callback when item is clicked
-  final Function(void Function) onClicked;
+  final void Function() onClicked;
 
   BetterPlayerBottomMenuGenericButton(this.icon, this.onClicked);
 }
