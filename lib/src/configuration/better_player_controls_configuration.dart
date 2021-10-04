@@ -3,6 +3,7 @@ import 'dart:ui';
 
 // Flutter imports:
 import 'package:better_player/better_player.dart';
+import 'package:better_player/src/controls/better_player_bottom_menu_generic_button.dart';
 
 // Project imports:
 import 'package:better_player/src/controls/better_player_overflow_menu_item.dart';
@@ -126,6 +127,9 @@ class BetterPlayerControlsConfiguration {
   ///Custom items of overflow menu
   final List<BetterPlayerOverflowMenuItem> overflowMenuCustomItems;
 
+  ///Custom items of bottom menu
+  final List<BetterPlayerBottomMenuGenericButton> bottomMenuGenericButtons;
+  
   ///Icon of the overflow menu
   final IconData overflowMenuIcon;
 
@@ -212,6 +216,7 @@ class BetterPlayerControlsConfiguration {
     this.enablePip = true,
     this.enableRetry = true,
     this.overflowMenuCustomItems = const [],
+    this.bottomMenuGenericButtons = const [],
     this.overflowMenuIcon = Icons.more_vert_outlined,
     this.pipMenuIcon = Icons.picture_in_picture_outlined,
     this.playbackSpeedIcon = Icons.shutter_speed_outlined,
