@@ -327,7 +327,8 @@ class _BetterPlayerMaterialControlsState
                     _buildExpandButton()
                   else
                     const SizedBox(),
-                  _genericButton(Icons.timer, () {}),
+                  _genericButton(Icons.precision_manufacturing_outlined, () {}),
+                  _genericButton(Icons.timer_outlined, () {}),
                   _genericButton(Icons.closed_caption, () {}),
                   _genericButton(Icons.replay, () {})
                 ],
