@@ -293,6 +293,10 @@ class _BetterPlayerMaterialControlsState
       duration: _controlsConfiguration.controlsHideTime,
       onEnd: _onPlayerHide,
       child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: 48,
+          vertical: 27,
+        ),
         height: _controlsConfiguration.controlBarHeight + 20.0,
         //color: _controlsConfiguration.controlBarColor,
         child: Column(
